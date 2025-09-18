@@ -16,7 +16,35 @@ public abstract class Giocatore {
         this.mana = this.MANA_MAX = mana;
         this.peso = this.PESO_MAX = peso;
         this.razza = razza;
+
+        this.inventario = new ArrayList<>(); // istanziamo e inizializziamo
     }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
+    
 
     
     
