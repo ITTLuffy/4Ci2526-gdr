@@ -1,4 +1,4 @@
 public enum Razza {
 
-    Umano, Elfo, Nano, Orco, Hobbit, Ent, Transformer, Golem
+    Umano, Elfo, Nano, Orco, Hobbit, Ent, Transformer, Golem, Alì
 }
