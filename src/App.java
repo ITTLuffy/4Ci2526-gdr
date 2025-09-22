@@ -23,6 +23,8 @@ public class App {
         Equip armor = new Equip("Armatura", 30, TipoEquip.Armatura);
         
         legolas.aggiungiEquip(armor);
+        legolas.aggiungiEquip(elmo);
+
 
         aragorn.attaccaMischia(legolas, 90);
         team.salutaTutti();
