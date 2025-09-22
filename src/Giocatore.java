@@ -14,7 +14,8 @@ public abstract class Giocatore {
         this.nome = nome;
         this.hp = this.HP_MAX = hp;
         this.mana = this.MANA_MAX = mana;
-        this.peso = this.PESO_MAX = peso;
+        this.peso = 0; 
+        this.PESO_MAX = peso;
         this.razza = razza;
 
         this.inventario = new ArrayList<>(); // istanziamo e inizializziamo

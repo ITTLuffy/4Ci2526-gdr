@@ -14,7 +14,8 @@ public class Squadra {
 
     public void salutaTutti() {
         for (Giocatore g : giocatori)
-            g.saluta();
+            if(!g.isMorto())
+                g.saluta();
 
     }
 }
