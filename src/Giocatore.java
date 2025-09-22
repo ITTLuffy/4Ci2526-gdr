@@ -36,7 +36,7 @@ public abstract class Giocatore {
         if (!(this instanceof Guerriero) || !haArma) return;
         
 
-        // veriico se il target ha armatura
+        // verifico se il target ha armatura
         int armature = 0;
         for (Equip equip : target.getInventario()) {
             if (equip.getTipo() == TipoEquip.Armatura) {
@@ -47,6 +47,38 @@ public abstract class Giocatore {
         // modifico i punti vita del target
         target.setHp(target.getHp() - danno / (armature + 1));
 
+    }
+
+    private void aggiornaPeso() {
+        peso = 0;
+        for(Equip equip : inventario) {
+            peso += equip.getPeso();
+        }
+    }
+
+    public void svuotaInventario() {
+        inventario.clear();
+        aggiornaPeso();
+    }
+
+    public boolean isTroppoCarico() {
+        return peso > PESO_MAX;
+    }
+
+    public boolean aggiungiEquip(Equip nuovo) {
+        if(nuovo.getPeso() + peso > PESO_MAX) return false;
+        
+        inventario.add(nuovo);
+        aggiornaPeso();
+        return true;
+    }
+
+    public boolean isMorto() {
+        return hp <= 0;
+    }
+
+    public void saluta(){
+        System.out.println("Ciao, mi chiamo " + nome + " e sono un " + razza);
     }
 
     public int getHp() {
