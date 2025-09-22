@@ -21,21 +21,54 @@ public abstract class Giocatore {
         this.inventario = new ArrayList<>(); // istanziamo e inizializziamo
     }
 
-    public void attaccaMischia(Giocatore target, int danno) {
+    public int attaccaMischia(Giocatore target, int danno) {
 
         boolean haArma = false;
 
-        // cerco nell'inventario se ho un arma da mischia
+        // cerco nell'inventario se ho almeno un'arma da mischia
+        for (Equip e : inventario) {
+
+            if (e.getTipo() == TipoEquip.ArmaMischia) {
+                haArma = true;
+                break;
+            }
+        }
+
+        // controllo l'istanza del mio oggetto e attacco solo se ho l'arma
+        if (!(this instanceof Guerriero) || !haArma) {
+            return 0;
+        }
+
+        // verifico se il target ha armature e le conto
+        int armature = 0;
+        for (Equip e : target.getInventario()) {
+            
+            if (e.getTipo() == TipoEquip.Armatura)
+                armature++;
+        }
+
+        // modifico i puntivita del target
+        int dannoFinale = danno / (armature + 1);
+        target.setHp(target.getHp() - dannoFinale); 
+        return dannoFinale;
+    }
+
+    public int attaccaRanged(Giocatore target, int danno) {
+        
+        boolean haArma = false;
+
+        // cerco nell'inventario se ho un arma ranged
         for (Equip equip : inventario) {
-            if (equip.getTipo() == TipoEquip.ArmaMischia) {
+            if (equip.getTipo() == TipoEquip.ArmaRanged) {
                 haArma = true;
                 break;
             }
         }
 
         // controllo l'instanza del mio oggetto e attacco solo se ho l'arma
-        if (!(this instanceof Guerriero) || !haArma) return;
-        
+        if (!(this instanceof Arciere) || !haArma) {
+            return 0;
+        }
 
         // verifico se il target ha armatura
         int armature = 0;
@@ -45,9 +78,11 @@ public abstract class Giocatore {
             }
         }
 
-        // modifico i punti vita del target
-        target.setHp(target.getHp() - danno / (armature + 1));
-
+        // modifico i puntivita del target
+        int dannoFinale = danno / (armature + 1);
+        target.setHp(target.getHp() - dannoFinale); 
+        return dannoFinale;
+        
     }
 
     private void aggiornaPeso() {
