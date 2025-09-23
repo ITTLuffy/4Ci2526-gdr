@@ -34,6 +34,9 @@ public class App {
         System.out.printf("Inflitti %d danni\n", danno2);
         team.salutaTutti();
 
+        int danno3 = gandalf.attaccaMago(legolas, 100);
+        System.out.printf("Inflitti %d danni\n", danno3);
+        team.salutaTutti();
 
 
     }

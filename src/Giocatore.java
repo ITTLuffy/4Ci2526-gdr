@@ -82,7 +82,44 @@ public abstract class Giocatore {
         int dannoFinale = danno / (armature + 1);
         target.setHp(target.getHp() - dannoFinale); 
         return dannoFinale;
+
+    }
+
+    public int attaccaMago(Giocatore target, int danno) {
         
+        // controllo l'instanza del mio oggetto e attacco solo se ho mana
+        if (!(this instanceof Mago) || mana < danno) {
+            return 0;
+        }
+
+        // verifico se il target ha armatura
+        int armature = 0;
+        for (Equip equip : target.getInventario()) {
+            if (equip.getTipo() == TipoEquip.Armatura) {
+                armature++;
+            }
+        }
+
+        // modifico i puntivita del target
+        int dannoFinale = danno / (armature + 1);
+        target.setHp(target.getHp() - dannoFinale); 
+        mana = mana - danno;
+
+        if(target.isMorto()) {
+            this.ricaricaMana();
+        }
+        
+        return dannoFinale;
+
+    }
+
+    public boolean ricaricaMana() {
+        if(!(this instanceof Mago)){
+            return false;
+        }
+
+        this.mana += MANA_MAX;
+        return true;
     }
 
     private void aggiornaPeso() {
