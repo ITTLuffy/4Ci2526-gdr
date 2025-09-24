@@ -26,15 +26,15 @@ public class App {
         legolas.aggiungiEquip(elmo);
         legolas.aggiungiEquip(arco);
 
-        int danno = aragorn.attaccaMischia(legolas, 50);
+        int danno = aragorn.attacca(legolas, 50);
         System.out.printf("Inflitti %d danni\n", danno);
         team.salutaTutti();
 
-        int danno2 = legolas.attaccaRanged(aragorn, 50);
+        int danno2 = legolas.attacca(aragorn, 50);
         System.out.printf("Inflitti %d danni\n", danno2);
         team.salutaTutti();
 
-        int danno3 = gandalf.attaccaMago(legolas, 100);
+        int danno3 = gandalf.attacca(legolas, 100);
         System.out.printf("Inflitti %d danni\n", danno3);
         team.salutaTutti();
 

@@ -4,5 +4,35 @@ public class Arciere extends Giocatore{
         super(nome, hp, mana, peso, razza);
     }
 
+    @Override
+    public int attacca(Giocatore target, int danno) {
+
+        boolean haArma = false;
+
+        // cerco nell'inventario se ho un arma ranged
+        for (Equip equip : inventario) {
+            if (equip.getTipo() == TipoEquip.ArmaRanged) {
+                haArma = true;
+                break;
+            }
+        }
+
+        // controllo l'instanza del mio oggetto e attacco solo se ho l'arma
+        if (!haArma) return 0;
+
+        // verifico se il target ha armatura
+        int armature = 0;
+        for (Equip equip : target.getInventario()) {
+            if (equip.getTipo() == TipoEquip.Armatura) {
+                armature++;
+            }
+        }
+
+        // modifico i puntivita del target
+        int dannoFinale = danno / (armature + 1);
+        target.setHp(target.getHp() - dannoFinale); 
+        
+        return super.attacca(target, dannoFinale);
+    }
     
 }
