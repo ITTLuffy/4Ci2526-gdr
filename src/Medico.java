@@ -29,4 +29,11 @@ public class Medico extends Giocatore {
 
     }
 
+    public boolean rianima(Giocatore target) {
+        if(!target.isMorto()) return false;
+
+        target.setHp(target.HP_MAX / 4);
+        return true;
+    }
+
 }
