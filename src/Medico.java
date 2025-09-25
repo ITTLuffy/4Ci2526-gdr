@@ -36,4 +36,13 @@ public class Medico extends Giocatore {
         return true;
     }
 
+    @Override
+    public boolean aggiungiEquip(Equip nuovo) {
+
+        // il medico non deve portare armi
+        if(nuovo.getTipo() == TipoEquip.ArmaMischia || nuovo.getTipo() == TipoEquip.ArmaRanged) return false;
+
+        return super.aggiungiEquip(nuovo);
+    }
+
 }

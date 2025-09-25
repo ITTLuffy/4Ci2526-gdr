@@ -39,7 +39,6 @@ public class Guerriero extends Giocatore {
 
     @Override
     public void ricaricaMana() {
-        // TODO Auto-generated method stub
         
     }
 

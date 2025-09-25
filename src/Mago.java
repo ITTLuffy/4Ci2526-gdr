@@ -46,4 +46,13 @@ public class Mago extends Giocatore {
         
     }
 
+    @Override
+    public boolean aggiungiEquip(Equip nuovo) {
+
+        // il mago non deve portare armi
+        if(nuovo.getTipo() == TipoEquip.ArmaMischia || nuovo.getTipo() == TipoEquip.ArmaRanged) return false;
+
+        return super.aggiungiEquip(nuovo);
+    }
+
 }
