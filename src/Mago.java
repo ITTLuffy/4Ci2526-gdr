@@ -28,7 +28,6 @@ public class Mago extends Giocatore {
             // modifico i puntivita del target
             int dannoFinale = multi * danno / (armature + 1);
             target.setHp(target.getHp() - dannoFinale);
-            mana = mana - danno;
 
             if (target.isMorto()) {
                 ricaricaMana();
@@ -40,10 +39,11 @@ public class Mago extends Giocatore {
         return 0;
     }
 
-    private void ricaricaMana() {
-
-        this.mana = MANA_MAX;
-
+    
+    @Override
+    public void ricaricaMana() {
+        mana = MANA_MAX;
+        
     }
 
 }

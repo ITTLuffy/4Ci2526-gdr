@@ -34,8 +34,13 @@ public class Guerriero extends Giocatore {
         int dannoFinale = danno / (armature + 1);
         target.setHp(target.getHp() - dannoFinale); 
 
-        return super.attacca(target, dannoFinale);
+        return dannoFinale;
     }
 
+    @Override
+    public void ricaricaMana() {
+        // TODO Auto-generated method stub
+        
+    }
 
 }

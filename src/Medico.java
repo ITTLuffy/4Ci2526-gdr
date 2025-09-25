@@ -1,7 +1,32 @@
 public class Medico extends Giocatore {
-    
+    private final int MANA_CURA = 20;
+
+
     public Medico(String nome, int hp, int mana, int peso, Razza razza) {
         super(nome, hp, mana, peso, razza);
 
     }
+
+    @Override
+    public int attacca(Giocatore target, int cura) {
+        
+        if (mana - MANA_CURA >= 0 && target.getHp() + cura > target.HP_MAX) {
+            mana -= MANA_CURA;
+
+            target.setHp(target.getHp() + cura);
+
+            return cura;
+        }
+
+        return 0;
+
+    }
+
+    @Override
+    public void ricaricaMana() {
+
+        mana = MANA_MAX;
+
+    }
+
 }

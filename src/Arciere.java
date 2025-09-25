@@ -17,7 +17,7 @@ public class Arciere extends Giocatore{
             }
         }
 
-        // controllo l'instanza del mio oggetto e attacco solo se ho l'arma
+        // attacco solo se ho l'arma
         if (!haArma) return 0;
 
         // verifico se il target ha armatura
@@ -32,7 +32,13 @@ public class Arciere extends Giocatore{
         int dannoFinale = danno / (armature + 1);
         target.setHp(target.getHp() - dannoFinale); 
         
-        return super.attacca(target, dannoFinale);
+        return dannoFinale;
+    }
+
+    @Override
+    public void ricaricaMana() {
+        // TODO Auto-generated method stub
+        
     }
     
 }

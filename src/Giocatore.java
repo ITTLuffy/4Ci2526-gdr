@@ -21,9 +21,7 @@ public abstract class Giocatore {
         this.inventario = new ArrayList<>(); // istanziamo e inizializziamo
     }
 
-    public int attacca(Giocatore target, int danno) {
-        return danno;
-    }
+    public abstract int attacca(Giocatore target, int danno);
 
     private void aggiornaPeso() {
         peso = 0;
@@ -68,6 +66,9 @@ public abstract class Giocatore {
             this.hp = hp;
         }
     }
+
+    public abstract void ricaricaMana();
+
 
     public int getMana() {
         return mana;
